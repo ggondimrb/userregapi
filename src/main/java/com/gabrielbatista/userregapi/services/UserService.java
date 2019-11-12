@@ -1,0 +1,74 @@
+package com.gabrielbatista.userregapi.services;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.gabrielbatista.userregapi.domain.User;
+import com.gabrielbatista.userregapi.domain.enums.Genre;
+import com.gabrielbatista.userregapi.dto.UserDTO;
+import com.gabrielbatista.userregapi.dto.UserNewDTO;
+import com.gabrielbatista.userregapi.repositories.UserRepository;
+import com.gabrielbatista.userregapi.services.exceptions.DataIntegrityException;
+import com.gabrielbatista.userregapi.services.exceptions.ObjectNotFoundException;
+
+@Service
+public class UserService {
+
+	@Autowired
+	private UserRepository repo;
+	
+	public User find(Integer id) {
+		Optional<User> obj = repo.findById(id);
+		return obj.orElseThrow(() -> new ObjectNotFoundException("User not found! Id: " + id + ", Type: " + User.class.getName()));
+				
+	}
+	
+	@Transactional
+	public User insert(User obj) {
+		obj.setId(null);
+		obj = repo.save(obj);
+		return obj;
+				
+	}
+	
+	public User update(User obj) {
+		User newObj = find(obj.getId());
+		updateData(newObj, obj);
+		return repo.save(obj);
+	}
+	
+	private void updateData(User newObj, User obj) {
+		newObj.setName(obj.getName());
+		newObj.setName(obj.getName());
+	}
+	
+	public void delete(Integer id) {
+		find(id);
+		try {
+			repo.deleteById(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new DataIntegrityException("Cannot exclude why there are related entities"); 
+		}
+	}
+	
+	public List<User> findAll() {
+		return repo.findAll();
+	}
+	
+	public User fromDTO(UserNewDTO objDto) {	
+		objDto.getGenre();
+		User u1 = new User(null, objDto.getName(), Genre.toEnum(objDto.getGenre()), objDto.getEmail(), objDto.getDateBirth(), objDto.getNaturalness(),objDto.getNationality(), objDto.getCpf());
+		return u1;
+	}
+	
+	//method to validate required fields  
+	public User fromDTO(UserDTO objDto) {
+		return new User(objDto.getId(), objDto.getName(), null, objDto.getEmail(), objDto.getDateBirth(), null, null, objDto.getCpf());
+	}
+}
