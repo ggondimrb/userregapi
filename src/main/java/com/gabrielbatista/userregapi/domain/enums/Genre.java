@@ -55,6 +55,20 @@ public enum Genre {
 				return x;
 			}
 		}		
-		throw new IllegalArgumentException("Id Inválido: " + id);
+		throw new IllegalArgumentException("Invalid Id: " + id);
 	}	
+	
+	public static Genre toInteger(Integer id) {
+		
+		if(id == null) {
+			return null;
+		}
+		
+		for (Genre x:Genre.values()) {
+			if (x.id.equals(id)) {
+				return x;
+			}
+		}		
+		throw new IllegalArgumentException("Invalid cod: " + id);
+	}
 }

@@ -43,9 +43,25 @@ public class UserService {
 		return repo.save(obj);
 	}
 	
-	private void updateData(User newObj, User obj) {
-		newObj.setName(obj.getName());
-		newObj.setName(obj.getName());
+	private void updateData(User newObj, User obj) {		
+		if (!obj.getName().equals(null)) {
+			newObj.setName(obj.getName());
+		}
+		if (!obj.getGenre().equals(null)) {
+			newObj.setGenre(obj.getGenre());
+		}
+		if (!obj.getDateBirth().equals(null)) {
+			newObj.setDateBirth(obj.getDateBirth());
+		}
+		if (!obj.getEmail().equals(null)) {
+			newObj.setEmail(obj.getEmail());
+		}
+		if (!obj.getNationality().equals(null)) {
+			newObj.setNationality(obj.getNationality());
+		}
+		if (!obj.getNaturalness().equals(null)) {
+			newObj.setNaturalness(obj.getNaturalness());
+		}
 	}
 	
 	public void delete(Integer id) {
@@ -69,6 +85,6 @@ public class UserService {
 	
 	//method to validate required fields  
 	public User fromDTO(UserDTO objDto) {
-		return new User(objDto.getId(), objDto.getName(), null, objDto.getEmail(), objDto.getDateBirth(), null, null, objDto.getCpf());
+		return new User(objDto.getId(), objDto.getName(),Genre.toEnum(objDto.getGenre()), objDto.getEmail(), objDto.getDateBirth(), objDto.getNaturalness(), objDto.getNationality(), objDto.getCpf());
 	}
 }

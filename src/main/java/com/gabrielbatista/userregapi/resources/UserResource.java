@@ -18,6 +18,10 @@ import com.gabrielbatista.userregapi.dto.UserDTO;
 import com.gabrielbatista.userregapi.dto.UserNewDTO;
 import com.gabrielbatista.userregapi.services.UserService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api(value = "Operations related to User registration")
 @RestController
 @RequestMapping("/user")
 public class UserResource {
@@ -25,6 +29,7 @@ public class UserResource {
 	@Autowired
 	private UserService service;
 	
+	@ApiOperation(value = "Retrieves a user for a given id")
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<User> find(@PathVariable Integer id)   {
 		User obj = service.find(id);
@@ -32,6 +37,7 @@ public class UserResource {
 	
 	}
 	
+	@ApiOperation(value = "Register a user")
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody UserNewDTO objDto) { // @valid to validate through of DTO
 		User obj = service.fromDTO(objDto);
@@ -41,6 +47,7 @@ public class UserResource {
 		
 	}
 	
+	@ApiOperation(value = "Update a user's record for a given id")
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody UserDTO objDto, @PathVariable Integer id) {
 		User obj = service.fromDTO(objDto);
@@ -49,6 +56,7 @@ public class UserResource {
 		return ResponseEntity.noContent().build();
 	}
 	
+	@ApiOperation(value = "Remove a user for a given id")
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);

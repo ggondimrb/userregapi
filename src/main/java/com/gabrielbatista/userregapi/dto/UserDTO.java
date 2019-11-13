@@ -7,6 +7,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 import com.gabrielbatista.userregapi.domain.User;
+import com.gabrielbatista.userregapi.domain.enums.Genre;
 import com.gabrielbatista.userregapi.services.validation.UserUpdate;
 
 @UserUpdate
@@ -25,19 +26,24 @@ public class UserDTO implements Serializable{
 	
 	private String cpf;
 	
+	private String genre;
+	
+	private String nationality;
+	
+	private String naturalness;
+	
 	public UserDTO() {
 		
 	}
+	
 
-	public UserDTO(User obj) {
-		super();
-		this.id = obj.getId();
-		this.name = obj.getName();
-		this.email = obj.getName();
-		this.dateBirth = obj.getDateBirth();
-		this.cpf = obj.getCpf();
-	}
-
+	/*
+	 * public UserDTO(User obj) { super(); this.id = obj.getId(); this.name =
+	 * obj.getName(); this.email = obj.getEmail(); this.dateBirth =
+	 * obj.getDateBirth(); this.cpf = obj.getCpf(); this.genre =
+	 * Genre.toEnum(obj.getGenre()); this.nationality = obj.getNationality();
+	 * this.naturalness = obj.getNaturalness(); }
+	 */
 	public Integer getId() {
 		return id;
 	}
@@ -76,6 +82,30 @@ public class UserDTO implements Serializable{
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	public String getGenre() {
+		return genre;
+	}
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+	public String getNationality() {
+		return nationality;
+	}
+
+	public void setNationality(String nationality) {
+		this.nationality = nationality;
+	}
+
+	public String getNaturalness() {
+		return naturalness;
+	}
+
+	public void setNaturalness(String naturalness) {
+		this.naturalness = naturalness;
 	}
 	
 }
