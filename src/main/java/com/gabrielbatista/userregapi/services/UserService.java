@@ -9,6 +9,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gabrielbatista.userregapi.domain.Adress;
 import com.gabrielbatista.userregapi.domain.User;
 import com.gabrielbatista.userregapi.domain.enums.Genre;
 import com.gabrielbatista.userregapi.dto.UserDTO;
@@ -47,9 +48,9 @@ public class UserService {
 		if (!obj.getName().equals(null)) {
 			newObj.setName(obj.getName());
 		}
-		if (!obj.getGenre().equals(null)) {
-			newObj.setGenre(obj.getGenre());
-		}
+		/*
+		 * if (!obj.getGenre().equals(null)) { newObj.setGenre(obj.getGenre()); }
+		 */
 		if (!obj.getDateBirth().equals(null)) {
 			newObj.setDateBirth(obj.getDateBirth());
 		}
@@ -77,9 +78,13 @@ public class UserService {
 		return repo.findAll();
 	}
 	
-	public User fromDTO(UserNewDTO objDto) {	
-		objDto.getGenre();
+	public User fromDTO(UserNewDTO objDto) {			
+		
 		User u1 = new User(null, objDto.getName(), Genre.toEnum(objDto.getGenre()), objDto.getEmail(), objDto.getDateBirth(), objDto.getNaturalness(),objDto.getNationality(), objDto.getCpf());
+		Adress a1 = new Adress(null, objDto.getStreet(), objDto.getNumber(), objDto.getDistrict(), objDto.getZipcode(), objDto.getComplement(),u1);
+		
+		u1.getAdress().add(a1);	
+		
 		return u1;
 	}
 	
