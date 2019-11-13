@@ -1,13 +1,17 @@
 package com.gabrielbatista.userregapi.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gabrielbatista.userregapi.domain.enums.Genre;
@@ -35,6 +39,9 @@ import com.gabrielbatista.userregapi.domain.enums.Genre;
 		private String nationality;
 		
 		private String cpf;
+		
+		@OneToMany(mappedBy="user", cascade=CascadeType.ALL)
+		private List<Adress> adress = new ArrayList<>();
 		
 		public User() {
 			
@@ -69,8 +76,8 @@ import com.gabrielbatista.userregapi.domain.enums.Genre;
 			this.name = name;
 		}
 	
-		public Integer getGenre() {
-			return genre;
+		public Genre getGenre() {
+			return Genre.toInteger(genre);
 		}
 
 		public void setGenre(Integer genre) {
@@ -115,8 +122,16 @@ import com.gabrielbatista.userregapi.domain.enums.Genre;
 	
 		public void setCpf(String cpf) {
 			this.cpf = cpf;
+		}		
+
+		public List<Adress> getAdress() {
+			return adress;
 		}
-	
+
+		public void setAdress(List<Adress> adress) {
+			this.adress = adress;
+		}
+
 		@Override
 		public int hashCode() {
 			final int prime = 31;
