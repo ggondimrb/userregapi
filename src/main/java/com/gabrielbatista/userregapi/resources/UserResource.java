@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiOperation;
 
 @Api(value = "Operations related to User registration")
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/v1/user")
 public class UserResource {
 	
 	@Autowired
