@@ -23,7 +23,7 @@ mvn package
 ```
 
 ```java
-java -jar target/desafiosistemap-0.0.1-SNAPSHOT.jar
+java -jar target/userregapi-0.0.1-SNAPSHOT.jar
 ```
 
 -- Inicializando front-end
