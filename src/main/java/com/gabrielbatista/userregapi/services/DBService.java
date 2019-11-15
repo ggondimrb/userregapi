@@ -22,7 +22,7 @@ public class DBService {
 	
 	public void instantiateTestDatabase() throws ParseException {
 		
-		User u1 = new User(null,"Sant da Silva", Genre.MALE, "sds@gmail.com", new Date(), "Baiano","Brasileiro", "31547720069","Rua Prof. José Candido");
+		User u1 = new User(null,"Santos da Silva", Genre.MALE, "sds@gmail.com", new Date(), "Pernambucano","Brasileiro", "31547720069","Rua Prof. José Candido");
 
 		userRepository.save(u1);
 		
