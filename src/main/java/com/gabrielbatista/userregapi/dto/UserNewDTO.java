@@ -21,13 +21,8 @@ public class UserNewDTO implements Serializable {
 	private String naturalness;
 	private String nationality;
 	private String cpf;	
+	private String address;
 	
-	//Adress
-	private String street;	
-	private Integer number;
-	private String district;
-	private Integer zipcode;
-	private String complement;
 
 	public UserNewDTO() {
 		
@@ -40,6 +35,7 @@ public class UserNewDTO implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+
 
 	public String getGenre() {
 		return genre;
@@ -89,43 +85,12 @@ public class UserNewDTO implements Serializable {
 		this.cpf = cpf;
 	}
 
-	public String getStreet() {
-		return street;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setStreet(String street) {
-		this.street = street;
+	public void setAddress(String address) {
+		this.address = address;
 	}
-
-	public Integer getNumber() {
-		return number;
-	}
-
-	public void setNumber(Integer number) {
-		this.number = number;
-	}
-
-	public String getDistrict() {
-		return district;
-	}
-
-	public void setDistrict(String district) {
-		this.district = district;
-	}
-
-	public Integer getZipcode() {
-		return zipcode;
-	}
-
-	public void setZipcode(Integer zipcode) {
-		this.zipcode = zipcode;
-	}
-
-	public String getComplement() {
-		return complement;
-	}
-
-	public void setComplement(String complement) {
-		this.complement = complement;
-	}
+	
 }

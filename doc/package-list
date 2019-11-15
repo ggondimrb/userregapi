@@ -1,0 +1,12 @@
+com.gabrielbatista.userregapi
+com.gabrielbatista.userregapi.config
+com.gabrielbatista.userregapi.domain
+com.gabrielbatista.userregapi.domain.enums
+com.gabrielbatista.userregapi.dto
+com.gabrielbatista.userregapi.repositories
+com.gabrielbatista.userregapi.resources
+com.gabrielbatista.userregapi.resources.exceptions
+com.gabrielbatista.userregapi.services
+com.gabrielbatista.userregapi.services.exceptions
+com.gabrielbatista.userregapi.services.validation
+com.gabrielbatista.userregapi.services.validation.utils

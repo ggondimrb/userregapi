@@ -27,14 +27,17 @@ public class UserInsertValidator implements ConstraintValidator<UserInsert, User
 		  
       List<FieldMessage> list = new ArrayList<>();
 	  
-	  if (!BR.isValidCpf(objDto.getCpf())) { list.add(new FieldMessage("cpf", "CPF Invalid")); }
+	  if (!BR.isValidCpf(objDto.getCpf())) { list.add(new FieldMessage("cpf", "CPF Inválido")); }
 	  
 	  User aux = repo.findByEmail(objDto.getEmail());
 	  
-	  if (aux != null) { list.add(new FieldMessage("email","Existing Email"));
+	  if (aux != null) { list.add(new FieldMessage("email","E-mail existente!"));
 	  }
 	  
-	  // inclua os testes aqui, inserindo erros na lista
+	  User aux2 = repo.findByEmail(objDto.getEmail());
+	  
+	  if (aux2 != null) { list.add(new FieldMessage("cpf","CPF existente!"));
+	  }	  
 	  
 	  for (FieldMessage e : list) {
 		  context.disableDefaultConstraintViolation();

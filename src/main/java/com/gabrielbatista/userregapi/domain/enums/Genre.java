@@ -1,49 +1,61 @@
 package com.gabrielbatista.userregapi.domain.enums;
 
-
+/**
+ *  Generos que podem ser utilizados
+ */
 public enum Genre {
 	
-	MALE(1,"M","Male"),
-	FEMININE(2,"F","Feminine"),
-	UNDEFINED(3,"U","Undefined");
+	MALE(1,"Male"),
+	FEMININE(2,"Feminine"),
+	UNDEFINED(3,"Undefined");
 	
-	private Integer id;
-	private String cod;
+	private Integer cod;
 	private String desc;
 	
-	private Genre(Integer id, String cod, String desc) {
-		this.id = id;
+	private Genre(Integer cod,String desc) {
 		this.cod = cod;
 		this.desc = desc;
 	}	
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public String getCod() {
+
+	public Integer getCod() {
 		return cod;
 	}
-	public void setCod(String cod) {
+
+	public void setCod(Integer cod) {
 		this.cod = cod;
 	}
+
 	public String getDesc() {
 		return desc;
 	}
+
 	public void setDesc(String desc) {
 		this.desc = desc;
+	}
+
+	public static Genre toEnum(Integer cod) {
+		
+		if(cod == null) {
+			return null;
+		}
+		
+		for (Genre x:Genre.values()) {
+			if (x.cod.equals(cod)) {
+				return x;
+			}
+		}		
+		throw new IllegalArgumentException("Id Inválido: " + cod);
 	}	
 	
-	public static Genre toEnum(String cod) {
+	public static Genre fromDesctoEnum(String desc) {
 		
 		Integer id = null;
 		
-		if (cod.equals("M")) {
+		if (desc.equals("MALE")) {
 			id = 1;
-		} else if (cod.equals("F")) {
+		} else if (desc.equals("FEMALE")) {
 			id = 2;
-		} else if (cod.equals("U")) {
+		} else if (desc.equals("UNDEFINED")) {
 			id = 3;
 		}
 		if(id == null) {
@@ -51,24 +63,24 @@ public enum Genre {
 		}
 		
 		for (Genre x:Genre.values()) {
-			if (x.id.equals(id)) {
+			if (x.cod.equals(id)) {
 				return x;
 			}
 		}		
 		throw new IllegalArgumentException("Invalid Id: " + id);
 	}	
 	
-	public static Genre toInteger(Integer id) {
+	public static Integer toInteger(String desc) {
 		
-		if(id == null) {
+		if(desc == null) {
 			return null;
 		}
 		
 		for (Genre x:Genre.values()) {
-			if (x.id.equals(id)) {
-				return x;
+			if (x.desc.equals(desc)) {
+				return x.cod;
 			}
 		}		
-		throw new IllegalArgumentException("Invalid cod: " + id);
+		throw new IllegalArgumentException("Tipo Inválido: " + desc);
 	}
 }

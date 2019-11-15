@@ -6,8 +6,6 @@ import java.util.Date;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
-import com.gabrielbatista.userregapi.domain.User;
-import com.gabrielbatista.userregapi.domain.enums.Genre;
 import com.gabrielbatista.userregapi.services.validation.UserUpdate;
 
 @UserUpdate
@@ -31,6 +29,8 @@ public class UserDTO implements Serializable{
 	private String nationality;
 	
 	private String naturalness;
+	
+	private String address;
 	
 	public UserDTO() {
 		
@@ -88,9 +88,11 @@ public class UserDTO implements Serializable{
 		return genre;
 	}
 
+
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
+
 
 	public String getNationality() {
 		return nationality;
@@ -106,6 +108,16 @@ public class UserDTO implements Serializable{
 
 	public void setNaturalness(String naturalness) {
 		this.naturalness = naturalness;
+	}
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	
 }

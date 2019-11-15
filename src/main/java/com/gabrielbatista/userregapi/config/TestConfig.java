@@ -1,4 +1,4 @@
-package com.gabrielbatista.userregapi.config;
+	package com.gabrielbatista.userregapi.config;
 
 import java.text.ParseException;
 
@@ -9,7 +9,10 @@ import org.springframework.context.annotation.Profile;
 
 import com.gabrielbatista.userregapi.services.DBService;
 
-
+/**
+Configuration for test Profile
+@author gabriel.batista
+*/
 @Configuration
 @Profile("test")
 public class TestConfig {

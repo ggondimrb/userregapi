@@ -10,6 +10,10 @@ import org.springframework.context.annotation.Profile;
 
 import com.gabrielbatista.userregapi.services.DBService;
 
+/**
+Configuration for dev Profile
+@author gabriel.batista
+*/
 @Configuration
 @Profile("dev")
 public class DevConfig {

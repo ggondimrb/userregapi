@@ -1,8 +1,10 @@
 package com.gabrielbatista.userregapi.services.validation.utils;
 
+/**
+ * Validaçao de campos brasileiros 
+ */
 public class BR {
 
-    // Validation of CPF
     private static final int[] weightSsn = {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
 
     private static int calculate(final String str, final int[] weight) {
@@ -16,7 +18,7 @@ public class BR {
     }
 
     /**
-     * Valid CPF
+     * Valida CPF
      *
      * @param ssn
      * @return

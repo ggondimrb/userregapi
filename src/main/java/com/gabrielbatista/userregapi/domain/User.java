@@ -1,17 +1,13 @@
 package com.gabrielbatista.userregapi.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gabrielbatista.userregapi.domain.enums.Genre;
@@ -38,26 +34,27 @@ import com.gabrielbatista.userregapi.domain.enums.Genre;
 		
 		private String nationality;
 		
+		@Column(unique=true)
 		private String cpf;
 		
-		@OneToMany(mappedBy="user", cascade=CascadeType.ALL)
-		private List<Adress> adress = new ArrayList<>();
+		private String address;
 		
 		public User() {
 			
 		}
 	
 		public User(Integer id, String name, Genre genre, String email, Date dateBirth, String naturalness,
-				String nationality, String cpf) {
+				String nationality, String cpf, String address) {
 			super();
 			this.id = id;
 			this.name = name;
-			this.genre = (genre == null ? null : genre.getId());
+			this.genre = (genre == null ? null : genre.getCod());
 			this.email = email;
 			this.dateBirth = dateBirth;
 			this.naturalness = naturalness;
 			this.nationality = nationality;
 			this.cpf = cpf;
+			this.address = address;
 		}
 	
 		public Integer getId() {
@@ -77,7 +74,7 @@ import com.gabrielbatista.userregapi.domain.enums.Genre;
 		}
 	
 		public Genre getGenre() {
-			return Genre.toInteger(genre);
+			return Genre.toEnum(genre);
 		}
 
 		public void setGenre(Integer genre) {
@@ -124,12 +121,12 @@ import com.gabrielbatista.userregapi.domain.enums.Genre;
 			this.cpf = cpf;
 		}		
 
-		public List<Adress> getAdress() {
-			return adress;
+		public String getAddress() {
+			return address;
 		}
 
-		public void setAdress(List<Adress> adress) {
-			this.adress = adress;
+		public void setAddress(String address) {
+			this.address = address;
 		}
 
 		@Override
