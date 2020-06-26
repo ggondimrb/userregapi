@@ -2,7 +2,7 @@
 
 Projeto feito para realizar cadastro de pessoas
 
-## Instalação :arrow_down:
+## Instalação 
 
 Clone o repositório e execute via java
 
@@ -10,7 +10,7 @@ Clone o repositório e execute via java
 git clone https://github.com/ggondimrb/userregapi.git
 ```
 
-## Executando :runner:
+## Executando
 
 -- Inicializando back-end
 
@@ -37,7 +37,7 @@ npm start
 ```
 
 
-## Documentação :green_book:
+## Documentação
 
 Para acessar documentação inicie a aplicação e acesse
 [Swagger](http://localhost:8080/swagger-ui.html#/)
